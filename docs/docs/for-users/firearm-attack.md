@@ -21,7 +21,6 @@ The composer opens pre-filled based on your weapon and the target's range — yo
 
 - Add manual target number modifiers (for situational stuff the system doesn't know about).
 - Spend dice from an available dice pool.
-- Spend Focus dice, if you have a relevant focus equipped.
 - Spend Karma dice to add extra dice to the roll itself, before you roll — this gets more expensive the more you add on the same roll.
 
 When you're happy with it, click **Roll**.
