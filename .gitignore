@@ -3,7 +3,8 @@ build/
 node_modules/
 .zone/
 .rules/
-.vscode/
+.vscode/*
+!.vscode/tasks.json
 .claude/
 
 # Files
