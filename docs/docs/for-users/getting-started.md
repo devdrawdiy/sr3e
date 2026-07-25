@@ -21,6 +21,10 @@ Open the **Actors** sidebar tab and create a new Actor of type **Character**. sr
 
 Character sheets carry a roll composer in the header — use it to build and send a dice-pool roll (attribute, skill, or a weapon's attack) straight to chat. Combat and contested actions (melee, firearms, spellcasting, resistance tests) walk both sides through the roll automatically once the first roll is made.
 
+## In-game help
+
+Press **F1** at any time in Foundry to open sr3e's built-in player guide — a quick reference you can pull up mid-session without leaving the table.
+
 ## Where to go next
 
-This page intentionally stops at "you're playing." Deeper walkthroughs of individual rules and procedures (attack resolution, dodging, resistance tests) are planned for a future documentation pass — for now, the system's tooltips and dialogs are the best in-the-moment reference.
+This page intentionally stops at "you're playing." Deeper walkthroughs of individual rules and procedures (attack resolution, dodging, resistance tests) are planned for a future documentation pass — for now, the F1 guide and the system's tooltips/dialogs are the best in-the-moment reference.
