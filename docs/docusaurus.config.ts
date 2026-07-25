@@ -14,14 +14,14 @@ const config: Config = {
    },
 
    // Set the production url of your site here (no sub-path)
-   url: "https://mirnau.github.io",
+   url: "https://devdrawdiy.github.io",
    // Set the /<baseUrl>/ pathname under which your site is served
    // For GitHub pages deployment, it is often '/<projectName>/'
    baseUrl: "/sr3e/",
 
    // GitHub pages deployment config.
    // If you aren't using GitHub pages, you don't need these.
-   organizationName: "mirnau", // Usually your GitHub org/user name.
+   organizationName: "devdrawdiy", // Usually your GitHub org/user name.
    projectName: "sr3e", // Usually your repo name.
 
    onBrokenLinks: "throw",
@@ -44,7 +44,7 @@ const config: Config = {
                sidebarPath: "./sidebars.ts",
                // Please change this to your repo.
                // Remove this to remove the "edit this page" links.
-               editUrl: "https://github.com/mirnau/sr3e/edit/main/docs/",
+               editUrl: "https://github.com/devdrawdiy/sr3e/edit/main/docs/",
             },
             blog: false,
             /*
@@ -91,7 +91,7 @@ const config: Config = {
            */
             //{ to: "/blog", label: "Blog", position: "left" },
             {
-               href: "https://github.com/mirnau/sr3e",
+               href: "https://github.com/devdrawdiy/sr3e",
                label: "GitHub",
                position: "right",
             },
@@ -135,7 +135,7 @@ const config: Config = {
                  */
                   {
                      label: "GitHub",
-                     href: "https://github.com/mirnau/sr3e",
+                     href: "https://github.com/devdrawdiy/sr3e",
                   },
                ],
             },

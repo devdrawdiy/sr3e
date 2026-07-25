@@ -1,7 +1,7 @@
 # Issue Tracker
 
 **Tracker:** GitHub Issues  
-**Repo:** mirnau/sr3e  
+**Repo:** devdrawdiy/sr3e  
 **CLI:** `gh`
 
 ## Rules for agents
