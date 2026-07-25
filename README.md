@@ -4,13 +4,21 @@
 
 sr3e is a Shadowrun Third Edition Unofficial game system for Foundry Virtual Tabletop (VTT). In Foundry, a game system is a modular software package that defines the rules, mechanics, and data structures for a specific tabletop role-playing game (TTRPG).
 
-## Beta release
+## The project is in Beta
 
-This is the first beta release of sr3e - the system is now playable end to end. It is still a hobby project developed in spare time, so expect rough edges, missing rules, and the occasional bug. If you run into one, please [report it](#contributing), that's exactly what a beta is for.
+The system is now playable end to end. It is still a hobby project developed in spare time, so expect rough edges, missing rules, and the occasional bug.
 
 ## How to install
 Provide this link in Foundry VTTs system dialog:
 https://github.com/devdrawdiy/sr3e/releases/latest/download/system.json
+
+## Contributing - Help Wanted! 
+
+Code and documentation contributions are very welcome. Small fixes can be submitted as pull requests, while larger changes are best discussed first in an issue or GitHub Discussion. I'm also looking for people interested in sticking around and helping maintain or develop larger parts of the system, so feel free to join the sr3e adventure.
+
+### Bug reports and feature requests
+
+Found a bug, a missing rule, or something behaving is some part of the system acting up? Please submit bug reports feature requests through the the issues tab above. There are ready made templates to fill in that helps mapping out your request.
 
 ## Architecture overview
 
@@ -26,15 +34,15 @@ Icons used throughout the system are sourced from [SVG Repo](https://www.svgrepo
 
 ## Texture credit
 
-The texture for the character sheet is from https://ambientcg.com/
+The texture for the character sheet is from https://ambientcg.com/ a shout out and big thank you here too.
 
-## AI-assisted development
+## AI-policy
 
-Parts of this project (code, documentation, and tooling) have been developed with the assistance of AI. This is disclosed in the interest of transparency. First iteration was made mostly by old fashion hand coding, including the visual design. Second iteration has been more AI-heavy. If you want to program you are welcome to use AI, but be sure to verify its output, and align it to the projects over all structure.
+It takes a village to raise a TTRPG system, and I started out as a single VTTRPG-system-dad. Beginning the project in 2024 I created the foundation of the project mostly by hand, to learn the ropes of FVTT. With a CS-degree in game dev front end was never my end goal, so I used this project to explore what I found interesting in frontend and as platform explore and experiment with AI to keep up with the times, and keep an eye on the hype. I have no particular love for AI, but prefer to not be left in the dark.
 
-## Contributing
-
-Contributions, bug reports, and feature requests are all welcome. If you'd like to report a bug or suggest an improvement, please use the issue templates on GitHub, they help route your report to the right place. If you'd like to contribute code or documentation you are welcome to tag along this sr3e adventure.
+* Parts of this project's code, documentation, and tooling have been developed with Claude and Codex. This is disclosed in the interest of transparency, in accordance with Foundry VTT best practice. The architecture and questionable hacks are human, implementation details is a mix between human and AI. Contributors may or may not use AI, per personal preference.
+* AI-generated "art" and "content" is banned from this project in particular. What happens in your game or unsanctioned compendiums is up to you and your moral framework. 
+* The sheet layout and design is entierly my human brain child, with a background that spans fine art and graphic design, I have put in my 10000-hours in that department.
 
 ## What is Shadowrun Third Edition
 
