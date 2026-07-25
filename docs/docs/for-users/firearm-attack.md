@@ -3,53 +3,46 @@ title: Firearm Attacks
 sidebar_position: 2
 ---
 
-This walks through what happens when a character fires a personal carried weapon — pistol, rifle, whatever's in their hands. Vehicle-mounted weapons and reloading are their own topics, not covered here.
+This walks through the click-by-click procedure for a personal carried firearm attack — what you click, in what order, what your options mean, and what happens next. It doesn't cover the underlying rules math (that's in the rulebook), reloading, or vehicle-mounted weapons — those are separate topics.
 
-## Declaring the attack
+## 1. Target
 
-Pick your weapon's fire mode — manual, semiauto, burst, full-auto, or energy — and how many rounds you're firing, then pick a target. The mode and round count both feed into recoil below, so declare them honestly before you roll.
+On the canvas, target the token you're attacking (Foundry's normal targeting — click the crosshair icon on a token, or whatever your target-selection binding is). You need exactly one target selected before you can roll.
 
-## Range and target number
+## 2. Open the weapon's roll
 
-Every weapon has four range bands — short, medium, long, extreme — each with its own base target number:
+On your character sheet, find the weapon in your inventory and click the dice icon on its card. If the icon is greyed out, hover it — it'll tell you why: no target selected (or more than one), no skill linked to the weapon yet, or no ammo loaded. Fix whichever applies and the icon lights up.
 
-| Band | Base TN |
-| --- | --- |
-| Short | 4 |
-| Medium | 5 |
-| Long | 6 |
-| Extreme | 9 |
+Clicking it opens the **Roll Composer**.
 
-The system measures the distance to your target and picks the band automatically. Some weapons also have a minimum range — get closer than that, and the shot doesn't resolve through the normal band table at all (you're too close for the weapon to be effective at range). Beyond a weapon's extreme band, the target is simply out of range.
+## 3. Compose your roll
 
-## Recoil
+The composer opens pre-filled based on your weapon and the target's range — you don't have to set anything to roll as-is. From here you can, if you want to:
 
-Firing more than once in the same combat phase makes follow-up shots harder — that's recoil. A few things shape how much:
+- Add manual target number modifiers (for situational stuff the system doesn't know about).
+- Spend dice from an available dice pool.
+- Spend Focus dice, if you have a relevant focus equipped.
+- Spend Karma dice to add extra dice to the roll itself, before you roll — this gets more expensive the more you add on the same roll.
 
-- **Manual and energy weapons never suffer recoil.**
-- **Semiauto** picks up a flat +1 penalty starting on your second shot of the phase.
-- **Burst fire** costs +2 if you're firing exactly two rounds; firing more than that scales up fast.
-- **Full-auto** penalty grows with every shot already fired this phase — the more you've sprayed, the worse your next burst gets.
-- **Weapon category changes the multiplier**: heavy weapons double the penalty, mounted weapons (vehicle turrets, tripods) halve it, and shotguns firing in burst mode double it too.
-- **Recoil compensation** — a property of the weapon itself, sometimes boosted by gear — subtracts from whatever penalty you've built up, down to a minimum of zero.
+When you're happy with it, click **Roll**.
 
-Recoil resets at the start of a new combat phase, and out of combat it clears itself out after a few seconds between shots — you're not permanently penalized for a burst you fired minutes ago.
+## 4. The defender responds
 
-## Ammo
+Rolling posts your result to chat and privately prompts whoever controls the target (their player, or the GM if nobody's claimed that actor) with two buttons:
 
-Whatever's loaded changes what your shot does on a hit:
+- **Dodge** — opens their own Roll Composer, pre-filled for a Reaction-based dodge roll. They compose it the same way you did and submit.
+- **Cancel** — declines outright. The contest ends there; a message posts saying they declined.
 
-- **APDS** — armor-piercing, cuts the target's ballistic armor protection in half.
-- **Gel rounds** — less lethal: damage becomes stun instead of physical, and the round hits softer.
-- **Tracer** — easier to land a hit with, at the cost of announcing your position.
-- **Flechette, incendiary, capsule, tracker** — each applies its own special effect on a hit (spread damage, burning, payload delivery, marking a target), handled case by case rather than through the normal damage math.
+## 5. Comparing rolls: reroll or buy a success
 
-Running out of ammo, and reloading, are covered separately — this page assumes the weapon is loaded.
+Once both sides have rolled, their results sit side by side in a contest card in chat. Before locking anything in, either side can, on their own dice:
 
-## The defender's response
+- **Click a die** to reroll every die that failed on that roll. Doing this again on the same roll costs more than the last time.
+- **Shift-click a die** to permanently buy one extra success by spending a Karma Pool point — this only works if you already landed at least one real success on the roll, and it's the more expensive option since it also permanently shrinks your Karma Pool ceiling. Use it when you're out of reroll room or want a guaranteed result instead of a gamble.
+- **Right-click a die** (only relevant on rolls that don't have a fixed target number) to hand-pick exactly which of your dice get rerolled, instead of rerolling every failure at once.
 
-The default response to a firearm attack is Dodge — a contested roll between your attack and the target's Reaction. This isn't a fixed penalty on either side; both of you roll, and the outcome is decided by comparing successes.
+Each side clicks **Done** on their own side when they're satisfied with their result — you don't have to wait for the other side to be ready.
 
-## Damage resistance
+## 6. Resolution and damage resistance
 
-If the attack wins the contest, the attacker's net successes carry over into the defender's damage resistance test — the step where armor, Body, and the weapon's power decide how much of that hit actually lands.
+Once both sides are done, the contest resolves. If the attack wins, it moves straight into a damage resistance roll for the target — same shape as the attack roll: a composer to build the roll, then the same reroll/buy-success/Done options once it's posted.
