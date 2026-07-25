@@ -24,7 +24,7 @@ export function exampleStoreManagerUsage(actor: Actor) {
   // Create a read-write store for an editable attribute
   // This creates bidirectional sync: UI changes update the document,
   // and document changes update the UI
-  const bodyStore = storeManager.GetRWStore<number>(actor, "attributes.body", false);
+  storeManager.GetRWStore<number>(actor, "attributes.body", false);
   // Reads from: actor.system.attributes.body
   // Writes to: actor.update({"system.attributes.body": value})
 
@@ -34,10 +34,9 @@ export function exampleStoreManagerUsage(actor: Actor) {
   // Reads from: actor.system.attributes.essence
   // Updates automatically when document changes
 
-  // Create a derived store that combines multiple values
-  const strengthModStore = storeManager.GetRWStore<number>(actor, "attributes.strengthMod", false);
-  storeManager.GetSumROStore([bodyStore, strengthModStore]);
-  // totalStrengthStore = bodyStore + strengthModStore
+  // Create a derived store that sums a SimpleStat's value + mod (e.g. attribute + Active Effect bonus)
+  storeManager.GetSimpleStatROStore(actor, "attributes.body");
+  // totalBodyStore = attributes.body.value + attributes.body.mod
 
   // Create a shallow store for UI state (not persisted to document)
   storeManager.GetShallowStore<boolean>(actor, "skillsExpanded", true);
@@ -46,13 +45,12 @@ export function exampleStoreManagerUsage(actor: Actor) {
   // Create a flag store for persistent UI preferences
   storeManager.GetFlagStore<string>(actor, "preferredTheme", "dark");
   // Reads from: actor.getFlag("sr3e", "preferredTheme")
-  // Writes to: actor.setFlag("sr3e", "preferredTheme", value)
+  // Writes via: actor.update({ "flags.sr3e.preferredTheme": value }, { render: false })
 
   // Use the stores in Svelte components
   // In a .svelte file, you would do:
   // <input type="number" bind:value={$bodyStore} />
-  // <div class="essence">Essence: {$essenceStore}</div>
-  // <div class="total">Total Strength: {$totalStrengthStore}</div>
+  // <div class="total">Total Body: {$totalBodyStore}</div>
 
   // When the component is destroyed, unsubscribe
   // This is typically called in Svelte's onDestroy hook
@@ -62,7 +60,13 @@ export function exampleStoreManagerUsage(actor: Actor) {
 }
 
 /**
- * Example: Using StoreManager in a Foundry Application class
+ * Example: Using StoreManager in a Foundry Application class.
+ * Shown against the legacy ApplicationV1 `ActorSheet` for brevity — actual sheets
+ * in this codebase extend `SR3EActorBase` (ApplicationV2) and mount Svelte
+ * components rather than calling `getData`/templates; in practice Subscribe/
+ * Unsubscribe are called from inside the mounted Svelte component itself
+ * (top-level script body + `onDestroy`), not from the sheet class. The
+ * StoreManager calls themselves are identical either way.
  */
 export class ExampleActorSheet extends ActorSheet {
   #storeManager = StoreManager.Instance;

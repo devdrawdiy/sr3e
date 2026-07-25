@@ -1,5 +1,12 @@
 import { unmount } from "svelte";
 
+/**
+ * Item-sheet counterpart to `SR3EActorBase` — same skip-render-then-mount-Svelte
+ * pattern via `_renderHTML`/`_replaceHTML`. Also hides the sheet element on
+ * close/teardown rather than letting Foundry animate a Handlebars-less window,
+ * and blocks native form submission since Svelte components own their own
+ * submit flow through the store layer.
+ */
 export class SR3EItemBase extends foundry.applications.sheets.ItemSheetV2 {
     protected apps: Record<string, any>[] = [];
 

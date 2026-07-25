@@ -26,6 +26,15 @@ interface ParsedConfig {
 /**
  * Vite plugin that auto-scaffolds i18n JSON files from TypeScript config files.
  *
+ * Flow: a `lang/config/*.ts` file exports a `readonly string[]` of keys for one
+ * category -> `lang/config.ts` wires that array into `createCategory("category", KEYS)`
+ * -> on every build/watch cycle this plugin parses the AST (via ts-morph) to recover
+ * category+keys pairs -> merges them into every `lang/<locale>.json`, adding new keys
+ * with a capitalized placeholder value and pruning keys no longer declared. To add a
+ * translatable string: add the key to the relevant KEYS array (or a new config module +
+ * `createCategory` call), then just edit the placeholder value the plugin writes into
+ * `lang/<locale>.json` — never hand-edit the JSON structure itself, it gets pruned/regenerated.
+ *
  * Uses Vite's native watch system (same as SCSS compilation) for automatic updates.
  * Preserves existing translations while adding new keys and pruning orphaned ones.
  *

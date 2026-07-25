@@ -306,7 +306,8 @@ export class StoreManager implements IStoreManager {
   }
 
   /**
-   * Creates or retrieves a read-write store with bidirectional synchronization
+   * Creates or retrieves a read-write store with bidirectional synchronization.
+   * @see IStoreManager.GetRWStore for the full contract and usage example.
    */
   GetRWStore<T>(document: FoundryDocument, dataPath: string, isRoot: boolean = false): Writable<T> {
     const docId = document.uuid;
@@ -346,7 +347,9 @@ export class StoreManager implements IStoreManager {
   }
 
   /**
-   * Creates or retrieves a read-only store
+   * Creates or retrieves a read-only store. Internally backed by a writable so
+   * #handleDocumentUpdate can push fresh values in; only `.subscribe` is exposed.
+   * @see IStoreManager.GetROStore for the full contract and usage example.
    */
   GetROStore<T>(document: FoundryDocument, dataPath: string, isRoot: boolean = false): Readable<T> {
     const docId = document.uuid;
@@ -372,6 +375,7 @@ export class StoreManager implements IStoreManager {
    * @param dataPath - The logical path to the SimpleStat (e.g., "attributes.body").
    *   The method internally reads `${dataPath}.value` and `${dataPath}.mod` — NOT `.modifier`.
    * @returns A readable store containing the sum of value + mod
+   * @see IStoreManager.GetSimpleStatROStore for the full contract and usage example.
    */
   GetSimpleStatROStore(document: FoundryDocument, dataPath: string): Readable<number> {
     const key = `${document.uuid}:sum:${dataPath}`;
@@ -389,7 +393,8 @@ export class StoreManager implements IStoreManager {
   }
 
   /**
-   * Creates or retrieves a shallow (non-persistent) store
+   * Creates or retrieves a shallow (non-persistent) store.
+   * @see IStoreManager.GetShallowStore for the full contract and usage example.
    */
   GetShallowStore<T>(document: FoundryDocument, storeName: string, initialValue: T): Writable<T> {
     const key = `${document.uuid}:${storeName}`;
@@ -404,7 +409,10 @@ export class StoreManager implements IStoreManager {
   }
 
   /**
-   * Creates or retrieves a flag store that persists to Foundry's flag system
+   * Creates or retrieves a flag store that persists to Foundry's flag system.
+   * Writes via `document.update({ "flags.sr3e.<flagName>": value }, { render: false })`,
+   * not `document.setFlag()`.
+   * @see IStoreManager.GetFlagStore for the full contract and usage example.
    */
   GetFlagStore<T>(document: FoundryDocument, flagName: string, initialValue: T): Writable<T> {
     const key = `${document.uuid}:${flagName}`;

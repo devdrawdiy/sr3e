@@ -141,7 +141,7 @@ export interface IStoreManager {
    * const storeManager = StoreManager.Instance;
    * const themeStore = storeManager.GetFlagStore<string>(actor, "theme", "dark");
    * // Reads from: actor.getFlag("sr3e", "theme")
-   * // Writes to: actor.setFlag("sr3e", "theme", value)
+   * // Writes via: actor.update({ "flags.sr3e.theme": value }, { render: false })
    * ```
    */
   GetFlagStore<T>(document: FoundryDocument, flagName: string, initialValue: T): Writable<T>;
