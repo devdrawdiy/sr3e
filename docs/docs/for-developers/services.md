@@ -25,6 +25,18 @@ export function hasCommodityComponent(item): boolean { /* ... */ }
 
 These take plain data or documents in, return a value or mutate a document once, and don't hold open state across calls beyond what a coordinator class caches internally.
 
+`SkillSpendingService` (also character creation) is the same coordinator shape with a documented cost rule baked into its methods rather than scattered across callers — the class owns the formula, callers just ask "what does the next point cost":
+
+```typescript
+// module/services/character-creation/SkillSpendingService.ts
+// cost = currentValue < linkedAttrRating ? 1 : 2 (all skill types)
+export class SkillSpendingService {
+  static #instance: SkillSpendingService | null = null;
+  static Instance(): SkillSpendingService { /* ... */ }
+  // does NOT call storeManager.Subscribe/Unsubscribe - that's the caller's job
+}
+```
+
 ## Orchestration/procedure services
 
 Combat (`module/services/combat/`) is the deepest example of this shape. Rather than one big "resolve an attack" function, each weapon family (melee, firearm) exposes small, pure planning functions that a higher-level composer strings together:
@@ -36,6 +48,19 @@ export function prepareMeleeResistance(defender, packet, netAttackSuccesses = 0)
 ```
 
 `planStrike` computes a `DamagePacket` from attacker/weapon state; `prepareMeleeResistance` turns that packet into a `ResistanceBuild` for the defender's resistance roll. Each family (`meleeFamily.ts`, `firearmFamily.ts`) implements the same shape — plan, then prepare-resistance — and a composer service sequences them against the actual contest/roll flow. This is intentionally not one class per procedure; it's small pure functions composed by the orchestration layer.
+
+The pattern isn't combat-specific — spellcasting drain resolves the same way, plan-then-resolve, just without a defender's counter-roll:
+
+```typescript
+// module/services/spells/spellDrain.ts
+export function buildSpellDrainSetup(actor, spell): ProcedureSetup {
+  const drainPower = Math.max(2, Math.floor(force / 2) + powerModifier + sustainingDrainPower(actor));
+  // ... builds a roll setup targeting drainPower, Willpower dice
+  return { kind: "spell-drain", rollState: { /* ... */ }, commitFn: async (roll) => applyDrain(/* ... */) };
+}
+```
+
+Casting a spell computes its drain power up front (half the spell's Force, plus modifiers), then hands back a `ProcedureSetup` the same shape combat procedures use — a roll to make, and a `commitFn` to apply the outcome once it resolves.
 
 ## Realtime/socket services
 
@@ -71,3 +96,5 @@ export function registerSocketHandlers(): void {
 ```
 
 Both exist to let the GM's client be the authority for state that must agree across all connected players (news ticker broadcasts, contest resolution) — a client mutates local state, broadcasts a socket payload, and every other client's handler applies the same change locally rather than re-deriving it independently.
+
+The combat socket's full payload union gives a sense of how much state actually needs to travel this way: `contestStub`, `contestResponse`, `contestAbort`, `updateChatMessage`, `contestSideUpdate`, `contestDone`, `contestBothDone`, `drainUpdate`, `resistanceUpdate`. Every contested roll, drain, and resistance test in the game touches this one channel — it's the backbone that keeps every connected client's view of a contest in sync, not a narrow one-off.
