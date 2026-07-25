@@ -4,6 +4,15 @@
  * work well for content-centric websites.
  */
 
+/* Same font the sr3e system itself uses for headers */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Headers use VT323, in the same seagreen used for headers in the sr3e system itself (--h1-color) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "VT323", monospace;
+  color: #1cd8b9;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
