@@ -7,10 +7,12 @@
 /* Same font the sr3e system itself uses for headers */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* Headers use VT323, in the same seagreen used for headers in the sr3e system itself (--h1-color) */
+/* Headers use VT323, in the same seagreen used for headers in the sr3e system itself (--h1-color),
+   with the same neon bloom (--h1-bloom) applied in fonts.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "VT323", monospace;
   color: #1cd8b9;
+  text-shadow: 0 0 1px #217288, 0 0 10px #4affb4, 0 0 20px rgb(0, 100, 162);
 }
 
 /* You can override the default Infima variables here. */
