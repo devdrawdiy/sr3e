@@ -22,11 +22,11 @@ Found a bug, a missing rule, or something behaving is some part of the system ac
 
 ## Architecture overview
 
-The system follows a four-layer model: **Svelte UI -> Service Layer -> IStoreManager -> Foundry VTT**. Actor and item sheets are built with Svelte 5 components that never touch Foundry documents directly, they read and write through a game-wide `IStoreManager` singleton, which is the only layer that talks to Foundry's actor/item/effect APIs. Rules and business logic live in a service layer beneath the UI, keeping components focused on presentation and services free of framework concerns. DataModels (rather than a legacy `template.json`) define the actor and item schemas.
+The system follows a four-layer model: Svelte UI -> Service Layer -> IStoreManager -> Foundry VTT. See the [Architecture](https://devdrawdiy.github.io/sr3e/docs/for-developers/architecture) and [Concepts](https://devdrawdiy.github.io/sr3e/docs/for-developers/concepts/store-manager) pages in the docs site for the full pattern.
 
 ## Localization
 
-Translation strings are not hand-maintained in `lang/*.json`. Each config module under `lang/config/` declares the set of keys a category needs in TypeScript; a Vite plugin (`vite-plugins/i18n-scaffold.ts`) scans those declarations on every build and scaffolds the locale JSON files automatically, adding new keys with a placeholder value, pruning keys that no longer exist, and leaving existing translations untouched. This keeps every locale file in sync with the code without anyone having to remember to update them by hand. Translating the system is just a matter of editing the values in the relevant `lang/<locale>.json` file.
+Locale files under `lang/*.json` are generated from TypeScript key declarations, not hand-maintained. See the [localization scaffolding](https://devdrawdiy.github.io/sr3e/docs/for-developers/concepts/localization) page for how to add or translate a string.
 
 ## Icon credit
 
