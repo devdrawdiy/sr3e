@@ -19,17 +19,16 @@ export default function Home(): ReactElement {
             An unofficial Shadowrun Third Edition system for Foundry VTT. Svelte-driven sheets,
             a service layer that owns the rules, and DataModel-defined actors and items.
           </p>
-          <a
-            className={styles.videoWrapper}
-            href={`https://youtu.be/${YOUTUBE_ID}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src={`https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`}
-              alt="sr3e overview video"
+          <div className={styles.videoWrapper}>
+            <iframe
+              src={`https://www.youtube.com/embed/${YOUTUBE_ID}`}
+              title="sr3e overview video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
             />
-          </a>
+          </div>
           <div className={styles.buttons}>
             <Link className="button button--primary button--lg" to="/docs/for-users/getting-started">
               For Users
